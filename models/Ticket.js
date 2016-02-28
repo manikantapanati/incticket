@@ -1,5 +1,5 @@
 var keystone = require('keystone');
-var Types = keystone.Field.Types;;
+var Types = keystone.Field.Types;
 
 var Ticket = new keystone.List('Ticket',{
 	autokey: { from: 'title', path: 'slug', unique: true },
@@ -15,7 +15,8 @@ Ticket.add({
         createdBy: { type: Types.Relationship, ref: 'User', index: true },
         assignedTo: { type: Types.Relationship, ref: 'User', index: true },
         createdAt: { type: Date, default: Date.now },
-        updatedAt: { type: Date, default: Date.now }
+        updatedAt: { type: Date, default: Date.now },
+        tags: { type: Types.Relationship, ref: 'Tag', many: true },
     });
     
 Ticket.schema.virtual('url').get(function() {

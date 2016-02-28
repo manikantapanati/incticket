@@ -19,6 +19,9 @@
 		{%- if user and user.canAccessKeystone -%}
 			<link href="/keystone/styles/content/editor.min.css" rel="stylesheet">
 		{%- endif -%}
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 
 		{# HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
 		   Safely remove this block if you are not targeting IE8 #}
@@ -62,17 +65,22 @@
 								<li{{ linkClass | safe }}>
 									<a href="{{ link.href }}">{{ link.label }}</a>
 								</li>
+                               
 							{%- endfor %}
 						</ul>
+                        <form class="navbar-form navbar-left" role="search" action="/search" method="GET">
+                            <div class="form-group">
+                            <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Search for tickets">
+                            </div>
+                            <button type="submit" class="btn btn-default">Search</button>
+                        </form>
 						<ul class="nav navbar-nav navbar-right">
-							{% if user -%}
-								{%- if user.canAccessKeystone -%}
-									<li><a href="/keystone">Open Keystone</a></li>
-								{%- endif -%}
-								<li><a href="/keystone/signout">Sign Out</a></li>
-							{%- else -%}
-								<li><a href="/keystone/signin">Sign In</a></li>
-							{%- endif %}
+							{% if user %}
+                                <li><a href="/signout">Sign Out</a></li>
+                            {% else %}
+                                <li><a href="/join">Create an Account</a></li>
+                                <li><a href="/signin">Sign In</a></li>
+                            {% endif %} 
 						</ul>
 					</div>
 				</div>

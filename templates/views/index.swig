@@ -3,31 +3,21 @@
 {% block content %}
 	<div class="container">
 		<div class="jumbotron">
-			<img src="/images/logo.svg" width="160">
-			<h1>Welcome</h1>
-			<p>This is your new <a href="http://keystonejs.com" target="_blank">KeystoneJS</a> website.</p>
-			<p>
-				It includes the latest versions of
-				<a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>
-				and <a href="http://www.jquery.com/" target="_blank">jQuery</a>.
-			</p>
-			<p>Visit the <a href="http://keystonejs.com/guide" target="_blank">Getting Started</a> guide to learn how to customise it.</p>
-			<hr>
-			{% if user and user.canAccessKeystone %}
+			<h2>{% if user %} Hello {{ user.name.first }} {{ user.name.last }}! {% endif %} Welcome to IncTicket</h2>
+		 		<hr>
+			{% if user  %}
 				<p>
-					<a href="/keystone" class="btn btn-lg btn-primary">Open the Admin UI</a>
+					<a href="/createticket" class="btn btn-lg btn-primary">Create a Ticket</a>
 				</p>
 			{% else %}
-				<p>We have created a default Admin user for you with the email <strong>user@keystonejs.com</strong> and the password <strong>admin</strong>.</p>
-				<p>
-					<a href="/keystone/signin" style="margin-right: 10px" class="btn btn-lg btn-primary">Sign in</a>
-					to use the Admin UI.
+			 	<p>
+					<a href="/join" style="margin-right: 10px" class="btn btn-lg btn-primary">Create An Account</a>
+					to use the IncTicket system.
 				</p>
 			{% endif %}
 			<hr>
 			<p>
-				Remember to <a href="https://github.com/keystonejs/keystone" target="_blank">Star KeystoneJS on GitHub</a> and
-				<a href="https://twitter.com/keystonejs" target="_blank">follow @keystonejs</a> on twitter for updates.
+				To view a <a href="/tickets" target="_blank">List of Tickets</a> Click here.
 			</p>
 		</div>
 	</div>
